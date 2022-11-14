@@ -30,4 +30,8 @@ public class MovieEventService {
         .findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("Event Not found"));
   }
+
+  public List<MovieEvent> getAllEventsForMovie(Long movieId) {
+    return movieEventRepository.findByMovie_Id(movieId);
+  }
 }

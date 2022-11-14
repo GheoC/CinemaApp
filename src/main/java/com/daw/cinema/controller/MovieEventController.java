@@ -1,6 +1,7 @@
 package com.daw.cinema.controller;
 
 import com.daw.cinema.dto.MovieEventDto;
+import com.daw.cinema.entity.MovieEvent;
 import com.daw.cinema.mapper.MovieEventMapper;
 import com.daw.cinema.service.MovieEventService;
 import lombok.RequiredArgsConstructor;
@@ -30,5 +31,12 @@ public class MovieEventController {
   @GetMapping("/api/v1/movie-events/{id}")
   public MovieEventDto getMovieEvent(@PathVariable Long id) {
     return movieEventMapper.toDto(movieEventService.getMovieEvent(id));
+  }
+
+  @GetMapping("/api/v1/movie-events/movie/{id}")
+  public List<MovieEventDto> getAllEventsForMovie(@PathVariable Long id) {
+    return movieEventService.getAllEventsForMovie(id).stream()
+        .map(movieEventMapper::toDto)
+        .toList();
   }
 }

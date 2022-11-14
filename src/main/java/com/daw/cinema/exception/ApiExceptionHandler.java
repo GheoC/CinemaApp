@@ -111,17 +111,4 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     return new ComplexExceptionPayload(
         ErrorCategory.VALIDATION_ERROR, "Inputs are not correct", errors);
   }
-
-  @ExceptionHandler(JwtException.class)
-  @ResponseStatus(HttpStatus.UNAUTHORIZED)
-  @ResponseBody
-  public SimpleExceptionPayload handleExpiredJwtException(JwtException ex)
-  {
-    return new SimpleExceptionPayload(ErrorCategory.CLIENT_ERROR, ex.getMessage());
-  }
-
-  @Override
-  protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
-    return super.handleExceptionInternal(ex, body, headers, status, request);
-  }
 }

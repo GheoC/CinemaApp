@@ -2,6 +2,7 @@ package com.daw.cinema.service;
 
 import com.daw.cinema.entity.User;
 import com.daw.cinema.enums.UserRole;
+import com.daw.cinema.exception.exceptions.ResourceNotFoundException;
 import com.daw.cinema.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,5 +24,11 @@ public class UserService {
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     user.setRole(UserRole.USER);
     return userRepository.save(user);
+  }
+
+  public User getUser(Long id) {
+    return userRepository
+        .findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("User NOT found"));
   }
 }

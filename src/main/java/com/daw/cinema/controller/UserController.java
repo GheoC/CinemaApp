@@ -4,12 +4,11 @@ import com.daw.cinema.dto.UserDto;
 import com.daw.cinema.entity.User;
 import com.daw.cinema.mapper.UserMapper;
 import com.daw.cinema.service.UserService;
+import com.daw.cinema.validation.discriminator.OnCreate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +25,13 @@ public class UserController {
   }
 
   @PostMapping("/api/v1/users")
-  public UserDto createUser(@RequestBody UserDto userDto) {
+  public UserDto createUser(@RequestBody @Validated(OnCreate.class) UserDto userDto) {
     return userMapper.toDto(userService.create(userMapper.toEntity(userDto)));
+  }
+
+  @GetMapping("/api/v1/users/{id}")
+  public UserDto getUser(@PathVariable Long id)
+  {
+    return userMapper.toDto(userService.getUser(id));
   }
 }
