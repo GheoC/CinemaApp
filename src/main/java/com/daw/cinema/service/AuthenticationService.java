@@ -35,6 +35,6 @@ public class AuthenticationService {
 
     User user = userRepository.findUserByEmail(loginCredentials.getUsername()).get();
 
-    return new TokenDto(token, jwtUtility.getExpirationDate(token), user.getId());
+    return new TokenDto(token, jwtUtility.getExpirationDate(token), user.getId(),user.getEmail(), user.getRole());
   }
 }

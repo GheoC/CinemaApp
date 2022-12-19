@@ -1,5 +1,6 @@
 package com.daw.cinema.dto;
 
+import com.daw.cinema.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TokenDto {
-  String token;
-  LocalDateTime expirationDate;
-  Long userId;
+  private String token;
+  private LocalDateTime expirationDate;
+  private Long userId;
+  private String username;
+  private UserRole role;
 }
