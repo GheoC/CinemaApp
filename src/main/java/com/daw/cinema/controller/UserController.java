@@ -1,7 +1,6 @@
 package com.daw.cinema.controller;
 
 import com.daw.cinema.dto.UserDto;
-import com.daw.cinema.entity.User;
 import com.daw.cinema.mapper.UserMapper;
 import com.daw.cinema.service.UserService;
 import com.daw.cinema.validation.discriminator.OnCreate;
@@ -14,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost/3000")
 public class UserController {
   private final UserService userService;
   private final UserMapper userMapper;

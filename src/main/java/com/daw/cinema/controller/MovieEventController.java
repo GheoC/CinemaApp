@@ -1,7 +1,6 @@
 package com.daw.cinema.controller;
 
 import com.daw.cinema.dto.MovieEventDto;
-import com.daw.cinema.entity.MovieEvent;
 import com.daw.cinema.mapper.MovieEventMapper;
 import com.daw.cinema.service.MovieEventService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost/3000")
 public class MovieEventController {
   private final MovieEventService movieEventService;
   private final MovieEventMapper movieEventMapper;
