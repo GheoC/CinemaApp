@@ -1,7 +1,6 @@
 package com.daw.cinema.service;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
@@ -40,7 +39,7 @@ public class JwtService implements Serializable {
     return Jwts.builder()
         .setSubject(subject)
         .addClaims(claims)
-        .setExpiration(Date.from(Instant.now().plus(5, ChronoUnit.MINUTES)))
+        .setExpiration(Date.from(Instant.now().plus(5000, ChronoUnit.MINUTES)))
         .signWith(secretKey)
         .compact();
   }

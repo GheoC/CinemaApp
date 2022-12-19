@@ -13,22 +13,26 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-  private final UserRepository userRepository;
-  private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-  public List<User> getAll() {
-    return userRepository.findAll();
-  }
+    public List<User> getAll() {
+        return userRepository.findAll();
+    }
 
-  public User create(User user) {
-    user.setPassword(passwordEncoder.encode(user.getPassword()));
-    user.setRole(UserRole.USER);
-    return userRepository.save(user);
-  }
+    public User create(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(UserRole.USER);
+        return userRepository.save(user);
+    }
 
-  public User getUser(Long id) {
-    return userRepository
-        .findById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("User NOT found"));
-  }
+    public User getUser(Long id) {
+        return userRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User NOT found"));
+    }
+
+    public void delete(Long id) {
+        userRepository.delete(getUser(id));
+    }
 }
