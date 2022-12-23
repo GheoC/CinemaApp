@@ -4,6 +4,7 @@ import com.daw.cinema.entity.User;
 import com.daw.cinema.enums.UserRole;
 import com.daw.cinema.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,7 +21,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
     User userFromDatabase =
         userRepository
             .findUserByEmail(username)
-            .orElseThrow(() -> new RuntimeException("User not found!"));
+            .orElseThrow(() -> new BadCredentialsException("Bad credentials"));
 
     UserDetails userDetails =
         new org.springframework.security.core.userdetails.User(

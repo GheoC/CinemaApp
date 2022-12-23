@@ -7,7 +7,6 @@ import com.daw.cinema.exception.payload.ComplexExceptionPayload;
 import com.daw.cinema.exception.payload.SimpleExceptionPayload;
 import com.daw.cinema.exception.payload.model.Error;
 import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.JwtException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -90,6 +89,13 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ResponseBody
   public SimpleExceptionPayload handleInconsistentDataException(InconsistentDataException ex) {
+    return new SimpleExceptionPayload(ErrorCategory.CLIENT_ERROR, ex.getMessage());
+  }
+
+  @ExceptionHandler(ExpiredJwtException.class)
+  @ResponseStatus(HttpStatus.UNAUTHORIZED)
+  @ResponseBody
+  public SimpleExceptionPayload handleTokenExpiredException(ExpiredJwtException ex){
     return new SimpleExceptionPayload(ErrorCategory.CLIENT_ERROR, ex.getMessage());
   }
 

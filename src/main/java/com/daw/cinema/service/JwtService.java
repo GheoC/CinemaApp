@@ -26,20 +26,20 @@ public class JwtService implements Serializable {
     secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
   }
 
-  public String generateToken(UserDetails userDetails) {
+  public String generateToken(UserDetails userDetails, Long userId) {
     var rolesString =
         userDetails.getAuthorities().stream()
             .map(GrantedAuthority::getAuthority)
             .collect(Collectors.joining(","));
 
-    return createToken(userDetails.getUsername(), Map.of("roles", rolesString));
+    return createToken(userDetails.getUsername(), Map.of("roles", rolesString, "userId", userId));
   }
 
   private String createToken(String subject, Map<String, Object> claims) {
     return Jwts.builder()
         .setSubject(subject)
         .addClaims(claims)
-        .setExpiration(Date.from(Instant.now().plus(5000, ChronoUnit.MINUTES)))
+        .setExpiration(Date.from(Instant.now().plus(2, ChronoUnit.DAYS)))
         .signWith(secretKey)
         .compact();
   }
