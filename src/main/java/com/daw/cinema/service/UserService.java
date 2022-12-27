@@ -2,6 +2,7 @@ package com.daw.cinema.service;
 
 import com.daw.cinema.entity.User;
 import com.daw.cinema.enums.UserRole;
+import com.daw.cinema.enums.UserStatus;
 import com.daw.cinema.exception.exceptions.ResourceNotFoundException;
 import com.daw.cinema.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,9 @@ public class UserService {
     }
 
     public User create(User user) {
-        user.setPassword("{bcrypt}"+passwordEncoder.encode(user.getPassword()));
+        user.setPassword("{bcrypt}" + passwordEncoder.encode(user.getPassword()));
         user.setRole(UserRole.USER);
+        user.setStatus(UserStatus.ACTIVE);
         return userRepository.save(user);
     }
 
@@ -34,5 +36,11 @@ public class UserService {
 
     public void delete(Long id) {
         userRepository.delete(getUser(id));
+    }
+
+    public void changeStatus(Long id) {
+        User userFromDb = getUser(id);
+        userFromDb.setStatus(userFromDb.getStatus() == UserStatus.ACTIVE ? UserStatus.INACTIVE : UserStatus.ACTIVE);
+        userRepository.save(userFromDb);
     }
 }

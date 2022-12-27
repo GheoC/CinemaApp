@@ -1,12 +1,10 @@
 package com.daw.cinema.dto;
 
 import com.daw.cinema.enums.UserRole;
+import com.daw.cinema.enums.UserStatus;
 import com.daw.cinema.validation.discriminator.OnCreate;
 import com.daw.cinema.validation.discriminator.OnUpdate;
 import lombok.Data;
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.*;
 
 @Data
@@ -26,4 +24,6 @@ public class UserDto {
   @NotEmpty private String password;
 
   @Null private UserRole role;
+
+  @Null private UserStatus status;
 }

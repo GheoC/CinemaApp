@@ -1,6 +1,7 @@
 package com.daw.cinema.entity;
 
 import com.daw.cinema.enums.UserRole;
+import com.daw.cinema.enums.UserStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +24,7 @@ public class User {
 
   @Enumerated(value = EnumType.STRING)
   private UserRole role;
+
+  @Enumerated(value = EnumType.STRING)
+  private UserStatus status;
 }

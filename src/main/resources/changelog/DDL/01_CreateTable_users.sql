@@ -10,6 +10,7 @@ CREATE TABLE users
     phone_number     VARCHAR(10)       NOT NULL,
     password         VARCHAR(80)       NOT NULL,
     role             VARCHAR(8)        NOT NULL,
+    status           VARCHAR(8)        NOT NULL,
 
 CONSTRAINT PK_user PRIMARY KEY
     (

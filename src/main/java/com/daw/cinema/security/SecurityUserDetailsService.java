@@ -2,6 +2,8 @@ package com.daw.cinema.security;
 
 import com.daw.cinema.entity.User;
 import com.daw.cinema.enums.UserRole;
+import com.daw.cinema.enums.UserStatus;
+import com.daw.cinema.exception.exceptions.UserInactiveException;
 import com.daw.cinema.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,6 +24,9 @@ public class SecurityUserDetailsService implements UserDetailsService {
         userRepository
             .findUserByEmail(username)
             .orElseThrow(() -> new BadCredentialsException("Bad credentials"));
+    if (userFromDatabase.getStatus()== UserStatus.INACTIVE) {
+        throw new UserInactiveException("User is deactivated!");
+    }
 
     UserDetails userDetails =
         new org.springframework.security.core.userdetails.User(

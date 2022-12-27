@@ -40,4 +40,9 @@ public class UserController {
   {
     userService.delete(id);
   }
+
+  @PutMapping("/api/v1/users/{id}/status")
+  public void changeStatus(@PathVariable Long id){
+    userService.changeStatus(id);
+  }
 }

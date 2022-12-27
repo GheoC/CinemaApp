@@ -3,6 +3,7 @@ package com.daw.cinema.exception;
 import com.daw.cinema.enums.ErrorCategory;
 import com.daw.cinema.exception.exceptions.InconsistentDataException;
 import com.daw.cinema.exception.exceptions.ResourceNotFoundException;
+import com.daw.cinema.exception.exceptions.UserInactiveException;
 import com.daw.cinema.exception.payload.ComplexExceptionPayload;
 import com.daw.cinema.exception.payload.SimpleExceptionPayload;
 import com.daw.cinema.exception.payload.model.Error;
@@ -116,5 +117,12 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     return new ComplexExceptionPayload(
         ErrorCategory.VALIDATION_ERROR, "Inputs are not correct", errors);
+  }
+
+  @ExceptionHandler(UserInactiveException.class)
+  @ResponseStatus(HttpStatus.UNAUTHORIZED)
+  @ResponseBody
+  public SimpleExceptionPayload handleUserInactiveException(UserInactiveException ex) {
+    return new SimpleExceptionPayload(ErrorCategory.CLIENT_ERROR, ex.getMessage());
   }
 }
