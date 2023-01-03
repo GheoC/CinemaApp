@@ -2,45 +2,156 @@
 --changeset george:dml_02
 
 
-INSERT INTO movie (name, duration, trailer, director, type, status)
+INSERT INTO movie (name, trailer, img, duration, is3D, description, promoted, imdb, premier_date, director, language,
+                   subtitles, status)
 VALUES
-(
-    'The Shawshank Redemption',
-    '144',
-    'https://www.youtube.com/embed/6hB3S9bIaco',
-    'Frank Darabont',
-    'DRAMA',
-    'PLAYING'
-),
-(
-    'The Lord of the Rings: The Fellowship of the Ring',
-    '178',
-    'https://www.youtube.com/embed/aStYWD25fAQ',
-    'Peter Jackson',
-    'FANTASY',
-    'PLAYING'
-),
-(
-    'The Godfather',
-    '175',
-    'https://www.youtube.com/embed/UaVTIH8mujA',
-    'Francis Ford Coppola',
-    'ACTION',
-    'PLAYING'
-),
-(
-    'Pulp Fiction',
-    '154',
-    'https://www.youtube.com/embed/tGpTpVyI_OQ',
-    'Quentin Tarantino',
-    'ACTION',
-    'PLAYING'
-),
-(
-    'The Dark Knight',
-    '152',
-    'https://www.youtube.com/embed/EXeTwQWrcwY',
-    'Christopher Nolan',
-    'ACTION',
-    'PLAYING'
-)
+    (
+        'Avatar: The Way of Water',
+        'https://www.youtube.com/embed/o5F8MOz_IDw',
+        'avatar-the-way-of-water.jpg',
+        '2h 42m',
+        0,
+        'Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na''vi race to protect their home.',
+        1,
+        8.5,
+        '2022-12-16',
+        'James Cameron',
+        'English',
+        'RO',
+        'PLAYING'
+    ),
+    (
+        'Black Adam',
+        'https://www.youtube.com/embed/X0tOpBuYasI',
+        'black-adam.jpg',
+        '2h 5m',
+        1,
+        'Nearly 5,000 years after he was bestowed with the almighty powers of the ancient gods--and imprisoned just as quickly--Black Adam (Dwayne Johnson) is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.',
+        1,
+        7.1,
+        '2022-10-01',
+        'Jaume Collet-Serra',
+        'English',
+        'RO',
+        'PLAYING'
+    ),
+    (
+        'Emancipation',
+        'https://www.youtube.com/embed/hGoNxmTDsJs',
+        'emancipation.jpg',
+        '2h 12m',
+        1,
+        'A runaway slave forges through the swamps of Louisiana on a tortuous journey to escape plantation owners that nearly killed him.',
+        1,
+        8.0,
+        '2022-12-01',
+        'Antoine Fuqua',
+        'English',
+        'RO',
+        'PLAYING'
+    ),
+    (
+        'Fantastic Beasts: The Secrets of Dumbledore',
+        'https://www.youtube.com/embed/Y9dr2zw-TXQ',
+        'fantastic-beasts-the-secrets-of-dumbledore.jpg',
+        '2h 23m',
+        0,
+        'Professor Albus Dumbledore must assist Newt Scamander and his partners as Grindelwald begins to lead an army to eliminate all Muggles.',
+        1,
+        6.2,
+        '2022-04-08',
+        'David Yates',
+        'English',
+        'RO',
+        'PLAYING'
+    ),
+    (
+        'Prey',
+        'https://www.youtube.com/embed/wZ7LytagKlc',
+        'prey.jpg',
+        '1h 40m',
+        1,
+        'Naru, a skilled warrior of the Comanche Nation, fights to protect her tribe against one of the first highly-evolved Predators to land on Earth.',
+        1,
+        7.2,
+        '2022-07-21',
+        'Dan Trachtenberg',
+        'English',
+        'RO',
+        'PLAYING'
+    ),
+    (
+        'Sonic the Hedgehog 2',
+        'https://www.youtube.com/embed/G5kzUpWAusI',
+        'sonic-the-hedgehog-2.jpg',
+        '2h 2m',
+        1,
+        'When the manic Dr Robotnik returns to Earth with a new ally, Knuckles the Echidna, Sonic and his new friend Tails is all that stands in their way.',
+        0,
+        6.5,
+        '2022-04-08',
+        'Jeff Fowler',
+        'English',
+        'RO',
+        'PLAYING'
+    ),
+    (
+        'The Batman',
+        'https://www.youtube.com/embed/mqqft2x_Aa4',
+        'the-batman.jpg',
+        '2h 56m',
+        0,
+        'When a sadistic serial killer begins murdering key political figures in Gotham, Batman is forced to investigate the city''s hidden corruption and question his family''s involvement.',
+        0,
+        7.9,
+        '2022-03-04',
+        'Matt Reeves',
+        'English',
+        'RO',
+        'PLAYING'
+    ),
+    (
+        'The Matrix Resurrections',
+        'https://www.youtube.com/embed/9ix7TUGVYIo',
+        'the-matrix-resurrections.jpg',
+        '2h 28m',
+        1,
+        'Return to a world of two realities: one, everyday life; the other, what lies behind it. To find out if his reality is a construct, to truly know himself, Mr. Anderson will have to choose to follow the white rabbit once more.',
+        0,
+        5.7,
+        '2021-12-01',
+        'Lana Wachowski',
+        'English',
+        'RO',
+        'PLAYING'
+    ),
+    (
+        'Thor: Love and Thunder',
+        'https://www.youtube.com/embed/Go8nTmfrQd8',
+        'thor-love-and-thunder.jpg',
+        '1h 59m',
+        0,
+        'Thor''s retirement is interrupted by a galactic killer known as Gorr the God Butcher, who seeks the extinction of the gods. To combat the threat, Thor enlists the help of King Valkyrie, Korg and ex-girlfriend Jane Foster, who - to Thor''s surprise - inexplicably wields his magical hammer, Mjolnir, as the Mighty Thor. Together, they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher''s vengeance and stop him before it''s too late.',
+        0,
+        6.4,
+        '2022-07-06',
+        'Taika Waititi',
+        'English',
+        'RO',
+        'PLAYING'
+    ),
+    (
+        'Top Gun: Maverick',
+        'https://www.youtube.com/embed/qSqVVswa420',
+        'top-gun-maverick.jpg',
+        '2h 11m',
+        1,
+        'After thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past when he leads TOP GUN''s elite graduates on a mission that demands the ultimate sacrifice from those chosen to fly it.',
+        0,
+        8.4,
+        '2022-05-27',
+        'Joseph Kosinski',
+        'English',
+        'RO',
+        'PLAYING'
+    );

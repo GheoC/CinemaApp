@@ -15,7 +15,7 @@ public class MovieEventDto {
   @NotNull(groups = OnUpdate.class)
   private Long id;
 
-  private MovieDto movieDto;
+  private Long movieDtoId;
   private String room;
   private LocalDateTime playMovieDateTime;
   private Double price;

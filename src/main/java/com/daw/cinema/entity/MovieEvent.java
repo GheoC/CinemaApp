@@ -26,5 +26,6 @@ public class MovieEvent {
 
   private Double price;
 
+  @Enumerated(value = EnumType.STRING)
   private MovieEventStatus status;
 }

@@ -5,13 +5,11 @@ import com.daw.cinema.entity.MovieEvent;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(
-    componentModel = "spring",
-    uses = {MovieMapper.class})
+@Mapper(componentModel = "spring")
 public interface MovieEventMapper {
-  @Mapping(target = "movie.id", source = "movieDto.id")
+  @Mapping(target = "movie.id", source = "movieDtoId")
   MovieEvent toEntity(MovieEventDto movieEventDto);
 
-  @Mapping(target = "movieDto", source = "movie")
+  @Mapping(target = "movieDtoId", source = "movie.id")
   MovieEventDto toDto(MovieEvent movieEvent);
 }

@@ -1,6 +1,6 @@
 package com.daw.cinema.enums;
 
-public enum MovieType {
+public enum MovieGenre {
     ACTION,
     ADVENTURE,
     COMEDY,
@@ -10,5 +10,7 @@ public enum MovieType {
     ROMANCE,
     SCIENCE_FICTION,
     THRILLER,
-    WESTERN
+    WESTERN,
+    FAMILY,
+    CRIME,
 }

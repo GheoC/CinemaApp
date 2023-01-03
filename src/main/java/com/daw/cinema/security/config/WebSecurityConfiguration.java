@@ -40,7 +40,7 @@ public class WebSecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/authenticate").permitAll()
                 .antMatchers(HttpMethod.GET, "/check-token/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/v1/movies").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/v1/movies/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/movie-events/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
                 .anyRequest().authenticated()

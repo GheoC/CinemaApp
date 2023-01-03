@@ -2,6 +2,7 @@ package com.daw.cinema.service;
 
 import com.daw.cinema.entity.Movie;
 import com.daw.cinema.entity.MovieEvent;
+import com.daw.cinema.enums.MovieEventStatus;
 import com.daw.cinema.exception.exceptions.ResourceNotFoundException;
 import com.daw.cinema.repository.MovieEventRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,6 @@ public class MovieEventService {
   }
 
   public List<MovieEvent> getAllEventsForMovie(Long movieId) {
-    return movieEventRepository.findByMovie_Id(movieId);
+    return movieEventRepository.findByStatusAndMovie_Id(MovieEventStatus.ACTIVE, movieId);
   }
 }

@@ -18,6 +18,7 @@ public class MovieService {
   }
 
   public Movie addMovie(Movie movie) {
+    movie.getMovieEvents().forEach(movieEvent -> movieEvent.setMovie(movie));
     return movieRepository.save(movie);
   }
 
@@ -25,5 +26,9 @@ public class MovieService {
     return movieRepository
         .findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("Movie Not found"));
+  }
+
+  public void delete(Long id) {
+    movieRepository.delete(getMovie(id));
   }
 }
