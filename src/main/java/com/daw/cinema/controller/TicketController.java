@@ -18,7 +18,6 @@ public class TicketController {
     private final TicketMapper ticketMapper;
 
     @PostMapping("/api/v1/tickets")
-    @PreAuthorize("hasRole('ADMIN')")
     public TicketDto buyTicket(@RequestBody TicketDto ticketDto) {
         return ticketMapper.toDto(ticketService.createTicket(ticketMapper.toEntity(ticketDto)));
     }

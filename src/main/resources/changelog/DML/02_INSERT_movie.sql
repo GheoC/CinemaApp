@@ -7,7 +7,7 @@ INSERT INTO movie (name, trailer, img, duration, is3D, description, promoted, im
 VALUES
     (
         'Avatar: The Way of Water',
-        'https://www.youtube.com/embed/o5F8MOz_IDw',
+        'o5F8MOz_IDw',
         'avatar-the-way-of-water.jpg',
         '2h 42m',
         0,
@@ -22,7 +22,7 @@ VALUES
     ),
     (
         'Black Adam',
-        'https://www.youtube.com/embed/X0tOpBuYasI',
+        'X0tOpBuYasI',
         'black-adam.jpg',
         '2h 5m',
         1,
@@ -37,7 +37,7 @@ VALUES
     ),
     (
         'Emancipation',
-        'https://www.youtube.com/embed/hGoNxmTDsJs',
+        'hGoNxmTDsJs',
         'emancipation.jpg',
         '2h 12m',
         1,
@@ -52,7 +52,7 @@ VALUES
     ),
     (
         'Fantastic Beasts: The Secrets of Dumbledore',
-        'https://www.youtube.com/embed/Y9dr2zw-TXQ',
+        'Y9dr2zw-TXQ',
         'fantastic-beasts-the-secrets-of-dumbledore.jpg',
         '2h 23m',
         0,
@@ -67,7 +67,7 @@ VALUES
     ),
     (
         'Prey',
-        'https://www.youtube.com/embed/wZ7LytagKlc',
+        'wZ7LytagKlc',
         'prey.jpg',
         '1h 40m',
         1,
@@ -82,7 +82,7 @@ VALUES
     ),
     (
         'Sonic the Hedgehog 2',
-        'https://www.youtube.com/embed/G5kzUpWAusI',
+        'G5kzUpWAusI',
         'sonic-the-hedgehog-2.jpg',
         '2h 2m',
         1,
@@ -97,7 +97,7 @@ VALUES
     ),
     (
         'The Batman',
-        'https://www.youtube.com/embed/mqqft2x_Aa4',
+        'mqqft2x_Aa4',
         'the-batman.jpg',
         '2h 56m',
         0,
@@ -112,7 +112,7 @@ VALUES
     ),
     (
         'The Matrix Resurrections',
-        'https://www.youtube.com/embed/9ix7TUGVYIo',
+        '9ix7TUGVYIo',
         'the-matrix-resurrections.jpg',
         '2h 28m',
         1,
@@ -127,7 +127,7 @@ VALUES
     ),
     (
         'Thor: Love and Thunder',
-        'https://www.youtube.com/embed/Go8nTmfrQd8',
+        'Go8nTmfrQd8',
         'thor-love-and-thunder.jpg',
         '1h 59m',
         0,
@@ -142,7 +142,7 @@ VALUES
     ),
     (
         'Top Gun: Maverick',
-        'https://www.youtube.com/embed/qSqVVswa420',
+        'qSqVVswa420',
         'top-gun-maverick.jpg',
         '2h 11m',
         1,
