@@ -24,7 +24,13 @@ public class TicketDto {
     @Null
     private Long movieId;
     @Null
+    private String movieName;
+    @Null
+    private String movieImg;
+    @Null
     private LocalDateTime playMovieDateTime;
+    @Null
+    protected String room;
 
     @Null(groups = OnCreate.class)
     private TicketStatus status;
