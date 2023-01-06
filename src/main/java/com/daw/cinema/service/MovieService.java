@@ -18,7 +18,6 @@ public class MovieService {
   }
 
   public Movie addMovie(Movie movie) {
-    movie.getMovieEvents().forEach(movieEvent -> movieEvent.setMovie(movie));
     return movieRepository.save(movie);
   }
 

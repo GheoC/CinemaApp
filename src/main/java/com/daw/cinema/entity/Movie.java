@@ -31,9 +31,6 @@ public class Movie {
     @Enumerated(value = EnumType.STRING)
     private MovieStatus status;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
-    private List<MovieEvent> movieEvents;
-
     @ManyToMany
     @JoinTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genres;

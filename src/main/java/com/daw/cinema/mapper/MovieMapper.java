@@ -25,12 +25,10 @@ public abstract class MovieMapper {
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "genres", source = "genres", qualifiedByName = "findGenresByName")
   @Mapping(target = "celebrities", source = "celebrities", qualifiedByName = "findCelebritiesByName")
-  @Mapping(target = "movieEvents", source = "movieEventDtos")
   public abstract Movie toEntity(MovieDto movieDto);
 
   @Mapping(target = "genres", source = "genres", qualifiedByName = "extractGenresEnum")
   @Mapping(target = "celebrities", source = "celebrities", qualifiedByName = "extractCelebritiesNames")
-  @Mapping(target = "movieEventDtos", source = "movieEvents")
   public abstract MovieDto toDto(Movie movie);
 
   @Named(value = "extractGenresEnum")

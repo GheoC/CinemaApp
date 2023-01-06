@@ -64,6 +64,4 @@ public class MovieDto {
     private List<MovieGenre> genres;
 
     private List<String> celebrities;
-
-    private List<MovieEventDto> movieEventDtos;
 }
