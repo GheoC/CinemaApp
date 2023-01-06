@@ -30,18 +30,21 @@ public class UserController {
   }
 
   @GetMapping("/api/v1/users/{id}")
+  @PreAuthorize("hasRole('ADMIN') or @authorizationEvaluator.isAccountOwner(#id)")
   public UserDto getUser(@PathVariable Long id)
   {
     return userMapper.toDto(userService.getUser(id));
   }
 
   @DeleteMapping("/api/v1/users/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public void deleteUser(@PathVariable Long id)
   {
     userService.delete(id);
   }
 
   @PutMapping("/api/v1/users/{id}/status")
+  @PreAuthorize("hasRole('ADMIN') or @authorizationEvaluator.isAccountOwner(#id)")
   public void changeStatus(@PathVariable Long id){
     userService.changeStatus(id);
   }
