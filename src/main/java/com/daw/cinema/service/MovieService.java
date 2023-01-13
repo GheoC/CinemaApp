@@ -5,6 +5,7 @@ import com.daw.cinema.exception.exceptions.ResourceNotFoundException;
 import com.daw.cinema.repository.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MovieService {
   private final MovieRepository movieRepository;
+  private final MoviePictureService moviePictureService;
 
   public List<Movie> getAllMovies() {
     return movieRepository.findAll();
@@ -27,7 +29,10 @@ public class MovieService {
         .orElseThrow(() -> new ResourceNotFoundException("Movie Not found"));
   }
 
+  @Transactional
   public void delete(Long id) {
-    movieRepository.delete(getMovie(id));
+    Movie movieToDelete = getMovie(id);
+    movieRepository.delete(movieToDelete);
+    moviePictureService.deleteByImageName(movieToDelete.getImg());
   }
 }

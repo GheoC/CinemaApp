@@ -5,6 +5,7 @@ import com.daw.cinema.exception.exceptions.ResourceNotFoundException;
 import com.daw.cinema.repository.MoviePictureRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -28,5 +29,10 @@ public class MoviePictureService {
         MoviePicture moviePicture = moviePictureRepository.findByName(name)
                 .orElseThrow(() -> new ResourceNotFoundException("Picture not found"));
         return moviePicture.getPicture();
+    }
+
+    @Transactional
+    public void deleteByImageName(String imgName){
+        moviePictureRepository.deleteByName(imgName);
     }
 }

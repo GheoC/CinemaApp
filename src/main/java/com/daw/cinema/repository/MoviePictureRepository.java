@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface MoviePictureRepository extends JpaRepository<MoviePicture, Long> {
 
     Optional<MoviePicture> findByName(String name);
+
+    void deleteByName(String name);
 }

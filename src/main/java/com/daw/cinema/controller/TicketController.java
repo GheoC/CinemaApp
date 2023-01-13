@@ -3,8 +3,10 @@ package com.daw.cinema.controller;
 import com.daw.cinema.dto.TicketDto;
 import com.daw.cinema.mapper.TicketMapper;
 import com.daw.cinema.service.TicketService;
+import com.daw.cinema.validation.discriminator.OnCreate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +20,7 @@ public class TicketController {
     private final TicketMapper ticketMapper;
 
     @PostMapping("/api/v1/tickets")
-    public TicketDto buyTicket(@RequestBody TicketDto ticketDto) {
+    public TicketDto buyTicket(@RequestBody @Validated(OnCreate.class) TicketDto ticketDto) {
         return ticketMapper.toDto(ticketService.createTicket(ticketMapper.toEntity(ticketDto)));
     }
 

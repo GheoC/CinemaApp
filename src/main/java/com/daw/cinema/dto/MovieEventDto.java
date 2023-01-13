@@ -5,6 +5,7 @@ import com.daw.cinema.validation.discriminator.OnCreate;
 import com.daw.cinema.validation.discriminator.OnUpdate;
 import lombok.Data;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.time.LocalDateTime;
@@ -15,9 +16,19 @@ public class MovieEventDto {
   @NotNull(groups = OnUpdate.class)
   private Long id;
 
+  @NotNull
   private Long movieDtoId;
+
+  @NotNull
   private String room;
+
+  @Future
+  @NotNull
   private LocalDateTime playMovieDateTime;
+
+  @NotNull
   private Double price;
+
+  @Null
   private MovieEventStatus status;
 }
