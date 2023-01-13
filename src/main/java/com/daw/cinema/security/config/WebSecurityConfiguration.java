@@ -42,6 +42,8 @@ public class WebSecurityConfiguration {
                 .antMatchers(HttpMethod.GET, "/check-token/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/movies/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/movie-events/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/api/v1/pictures/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/v1/pictures").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
                 .anyRequest().authenticated()
                 .and()

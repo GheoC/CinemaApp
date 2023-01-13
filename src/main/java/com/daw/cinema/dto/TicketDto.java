@@ -30,7 +30,9 @@ public class TicketDto {
     @Null
     private LocalDateTime playMovieDateTime;
     @Null
-    protected String room;
+    private String room;
+    @Null
+    private byte[] picture;
 
     @Null(groups = OnCreate.class)
     private TicketStatus status;
