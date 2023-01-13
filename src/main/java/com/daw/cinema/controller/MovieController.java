@@ -19,8 +19,13 @@ public class MovieController {
   private final MovieMapper movieMapper;
 
   @GetMapping("/api/v1/movies")
+  @PreAuthorize("hasRole('ADMIN')")
   public List<MovieDto> getAllMovies() {
     return movieService.getAllMovies().stream().map(movieMapper::toDto).toList();
+  }
+  @GetMapping("/api/v1/movies/playing")
+  public List<MovieDto> getAllPlayingMovies(){
+    return movieService.getAllPlayingMovies().stream().map(movieMapper::toDto).toList();
   }
 
   @GetMapping("/api/v1/movies/{id}")
@@ -28,13 +33,19 @@ public class MovieController {
     return movieMapper.toDto(movieService.getMovie(id));
   }
 
-  @PostMapping("api/v1/movies")
+  @PostMapping("/api/v1/movies")
   @PreAuthorize("hasRole('ADMIN')")
   public MovieDto addMovie(@RequestBody @Validated(OnCreate.class) MovieDto movieDto) {
     return movieMapper.toDto(movieService.addMovie(movieMapper.toEntity(movieDto)));
   }
 
-  @DeleteMapping("api/v1/movies/{id}")
+  @PutMapping("/api/v1/movies/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
+  public void switchStatus(@PathVariable Long id){
+    movieService.switchStatus(id);
+  }
+
+  @DeleteMapping("/api/v1/movies/{id}")
   @PreAuthorize("hasRole('ADMIN')")
   public void deleteMovie(@PathVariable Long id){
     movieService.delete(id);

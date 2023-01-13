@@ -1,6 +1,7 @@
 package com.daw.cinema.service;
 
 import com.daw.cinema.entity.Movie;
+import com.daw.cinema.enums.MovieStatus;
 import com.daw.cinema.exception.exceptions.ResourceNotFoundException;
 import com.daw.cinema.repository.MovieRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,10 @@ public class MovieService {
     return movieRepository.findAll();
   }
 
+  public List<Movie> getAllPlayingMovies(){
+    return movieRepository.findByStatus(MovieStatus.PLAYING);
+  }
+
   public Movie addMovie(Movie movie) {
     return movieRepository.save(movie);
   }
@@ -34,5 +39,11 @@ public class MovieService {
     Movie movieToDelete = getMovie(id);
     movieRepository.delete(movieToDelete);
     moviePictureService.deleteByImageName(movieToDelete.getImg());
+  }
+
+  public void switchStatus(Long id) {
+    Movie movie = getMovie(id);
+    movie.setStatus(movie.getStatus() == MovieStatus.PLAYING ? MovieStatus.CANCELED : MovieStatus.PLAYING);
+    movieRepository.save(movie);
   }
 }
