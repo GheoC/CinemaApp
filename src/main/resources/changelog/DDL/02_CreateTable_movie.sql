@@ -20,5 +20,5 @@ CREATE TABLE movie
 
 CONSTRAINT PK_movie PRIMARY KEY
     (id),
-CONSTRAINT Ak_movie UNIQUE (name)
+CONSTRAINT AK_movie UNIQUE (name)
 );

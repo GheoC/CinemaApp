@@ -10,12 +10,7 @@ create TABLE movie_event
     price                   DOUBLE             NOT NULL,
     status                  VARCHAR(8)         NOT NULL DEFAULT 'ACTIVE',
 
-CONSTRAINT PK_movie PRIMARY KEY
-    (
-        id
-    ),
-CONSTRAINT FK_movie_event_movie FOREIGN KEY (movie_id) REFERENCES movie
-    (
-        id
-    )
+CONSTRAINT PK_movie PRIMARY KEY (id),
+CONSTRAINT FK_movie_event_movie FOREIGN KEY (movie_id) REFERENCES movie (id),
+CONSTRAINT AK_movie_event UNIQUE (room, playmovie_datetime)
 );
