@@ -1,6 +1,7 @@
 package com.daw.cinema.controller;
 
 import com.daw.cinema.dto.MovieEventDto;
+import com.daw.cinema.enums.MovieEventStatus;
 import com.daw.cinema.mapper.MovieEventMapper;
 import com.daw.cinema.service.MovieEventService;
 import com.daw.cinema.validation.discriminator.OnCreate;
@@ -36,7 +37,7 @@ public class MovieEventController {
 
   @GetMapping("/api/v1/movie-events")
   public List<MovieEventDto> getMovieEvents() {
-    return movieEventService.getAllEvents().stream().map(movieEventMapper::toDto).toList();
+    return movieEventService.getAllFutureEvents().stream().map(movieEventMapper::toDto).toList();
   }
 
   @GetMapping("/api/v1/movie-events/{id}")
@@ -45,14 +46,15 @@ public class MovieEventController {
   }
 
   @GetMapping("/api/v1/movie-events/movie/{id}")
-  public List<MovieEventDto> getAllEventsForMovie(@PathVariable Long id) {
-    return movieEventService.getAllFutureEventsForMovie(id).stream()
+  public List<MovieEventDto> getAllEventsForMovie(@PathVariable Long id, @RequestParam(required = false) MovieEventStatus status) {
+    return movieEventService.getAllFutureEventsForMovie(id, status).stream()
         .map(movieEventMapper::toDto)
         .toList();
   }
 
-  @GetMapping("/api/v1/movie-events/future")
-  public List<MovieEventDto> getFutureMovieEvents(){
-    return movieEventService.getAllFutureEvents().stream().map(movieEventMapper::toDto).toList();
+  @PutMapping("/api/v1/movie-events/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
+  public void switchStatus(@PathVariable Long id){
+    movieEventService.switchStatus(id);
   }
 }

@@ -30,21 +30,27 @@ public class MovieEventService {
     return movieEvents.stream().map(this::addEvent).toList();
   }
 
-  public List<MovieEvent> getAllEvents() {
-    return movieEventRepository.findAll();
-  }
-
   public MovieEvent getMovieEvent(Long id) {
     return movieEventRepository
         .findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("Event Not found"));
   }
 
-  public List<MovieEvent> getAllFutureEventsForMovie(Long movieId) {
-    return movieEventRepository.findByStatusAndMovie_IdAndPlayMovieDateTimeIsAfter(MovieEventStatus.ACTIVE, movieId, LocalDateTime.now());
+  public List<MovieEvent> getAllFutureEventsForMovie(Long movieId, MovieEventStatus status) {
+    if (status == null){
+      return movieEventRepository.findByMovie_IdAndPlayMovieDateTimeIsAfter(movieId, LocalDateTime.now());
+    }
+
+    return movieEventRepository.findByStatusAndMovie_IdAndPlayMovieDateTimeIsAfter(status, movieId, LocalDateTime.now());
   }
 
   public List<MovieEvent> getAllFutureEvents(){
     return movieEventRepository.findAllByPlayMovieDateTimeIsAfter(LocalDateTime.now());
+  }
+
+  public void switchStatus(Long id) {
+    MovieEvent movieEvent = getMovieEvent(id);
+    movieEvent.setStatus(movieEvent.getStatus() == MovieEventStatus.ACTIVE ? MovieEventStatus.CANCELED : MovieEventStatus.ACTIVE);
+    movieEventRepository.save(movieEvent);
   }
 }

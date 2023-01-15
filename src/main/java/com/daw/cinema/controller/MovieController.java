@@ -1,6 +1,7 @@
 package com.daw.cinema.controller;
 
 import com.daw.cinema.dto.MovieDto;
+import com.daw.cinema.enums.MovieStatus;
 import com.daw.cinema.mapper.MovieMapper;
 import com.daw.cinema.service.MovieService;
 import com.daw.cinema.validation.discriminator.OnCreate;
@@ -19,13 +20,8 @@ public class MovieController {
   private final MovieMapper movieMapper;
 
   @GetMapping("/api/v1/movies")
-  @PreAuthorize("hasRole('ADMIN')")
-  public List<MovieDto> getAllMovies() {
-    return movieService.getAllMovies().stream().map(movieMapper::toDto).toList();
-  }
-  @GetMapping("/api/v1/movies/playing")
-  public List<MovieDto> getAllPlayingMovies(){
-    return movieService.getAllPlayingMovies().stream().map(movieMapper::toDto).toList();
+  public List<MovieDto> getAllMovies(@RequestParam(required = false) MovieStatus status) {
+    return movieService.getMovies(status).stream().map(movieMapper::toDto).toList();
   }
 
   @GetMapping("/api/v1/movies/{id}")

@@ -16,12 +16,11 @@ public class MovieService {
   private final MovieRepository movieRepository;
   private final MoviePictureService moviePictureService;
 
-  public List<Movie> getAllMovies() {
+  public List<Movie> getMovies(MovieStatus status) {
+    if (status !=null){
+      return movieRepository.findByStatus(status);
+    }
     return movieRepository.findAll();
-  }
-
-  public List<Movie> getAllPlayingMovies(){
-    return movieRepository.findByStatus(MovieStatus.PLAYING);
   }
 
   public Movie addMovie(Movie movie) {

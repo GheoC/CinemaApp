@@ -11,4 +11,6 @@ public interface MovieEventRepository extends JpaRepository<MovieEvent, Long> {
     List<MovieEvent> findAllByPlayMovieDateTimeIsAfter(LocalDateTime localDateTime);
 
     List<MovieEvent> findByStatusAndMovie_IdAndPlayMovieDateTimeIsAfter(MovieEventStatus status, Long movieId, LocalDateTime localDateTime);
+
+    List<MovieEvent> findByMovie_IdAndPlayMovieDateTimeIsAfter(Long movieId, LocalDateTime localDateTime);
 }
