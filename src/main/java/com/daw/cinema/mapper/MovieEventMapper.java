@@ -11,5 +11,6 @@ public interface MovieEventMapper {
   MovieEvent toEntity(MovieEventDto movieEventDto);
 
   @Mapping(target = "movieDtoId", source = "movie.id")
+  @Mapping(target = "movieName", source = "movie.name")
   MovieEventDto toDto(MovieEvent movieEvent);
 }

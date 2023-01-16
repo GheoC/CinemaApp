@@ -19,6 +19,9 @@ public class MovieEventDto {
   @NotNull
   private Long movieDtoId;
 
+  @Null
+  private String movieName;
+
   @NotNull
   private String room;
 

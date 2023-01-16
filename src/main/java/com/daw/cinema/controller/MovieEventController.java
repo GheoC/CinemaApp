@@ -36,8 +36,8 @@ public class MovieEventController {
   }
 
   @GetMapping("/api/v1/movie-events")
-  public List<MovieEventDto> getMovieEvents() {
-    return movieEventService.getAllFutureEvents().stream().map(movieEventMapper::toDto).toList();
+  public List<MovieEventDto> getMovieEvents(@RequestParam(required = false) MovieEventStatus status) {
+    return movieEventService.getAllFutureEvents(status).stream().map(movieEventMapper::toDto).toList();
   }
 
   @GetMapping("/api/v1/movie-events/{id}")
