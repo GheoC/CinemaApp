@@ -36,4 +36,20 @@ public class TicketDto {
 
     @Null(groups = OnCreate.class)
     private TicketStatus status;
+
+    @Override
+    public String toString() {
+        return "TicketDto{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", movieEventId=" + movieEventId +
+                ", priceCharged=" + priceCharged +
+                ", movieId=" + movieId +
+                ", movieName='" + movieName + '\'' +
+                ", movieImg='" + movieImg + '\'' +
+                ", playMovieDateTime=" + playMovieDateTime +
+                ", room='" + room + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

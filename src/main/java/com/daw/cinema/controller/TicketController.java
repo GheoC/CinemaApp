@@ -1,5 +1,6 @@
 package com.daw.cinema.controller;
 
+import com.daw.cinema.annotation.Audit;
 import com.daw.cinema.dto.TicketDto;
 import com.daw.cinema.mapper.TicketMapper;
 import com.daw.cinema.service.TicketService;
@@ -20,6 +21,7 @@ public class TicketController {
     private final TicketMapper ticketMapper;
 
     @PostMapping("/api/v1/tickets")
+    @Audit
     public TicketDto buyTicket(@RequestBody @Validated(OnCreate.class) TicketDto ticketDto) {
         return ticketMapper.toDto(ticketService.createTicket(ticketMapper.toEntity(ticketDto)));
     }
