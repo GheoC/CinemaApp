@@ -1,5 +1,6 @@
 package com.daw.cinema.controller;
 
+import com.daw.cinema.annotation.Audit;
 import com.daw.cinema.dto.MovieEventDto;
 import com.daw.cinema.enums.MovieEventStatus;
 import com.daw.cinema.mapper.MovieEventMapper;
@@ -23,6 +24,7 @@ public class MovieEventController {
 
   @PostMapping("/api/v1/movie-events")
   @PreAuthorize("hasRole('ADMIN')")
+  @Audit
   public MovieEventDto addMovieEvent(@RequestBody @Validated(OnCreate.class) MovieEventDto movieEventDto) {
     return movieEventMapper.toDto(
         movieEventService.addEvent(movieEventMapper.toEntity(movieEventDto)));
@@ -30,6 +32,7 @@ public class MovieEventController {
 
   @PostMapping("/api/v1/movie-events/list")
   @PreAuthorize("hasRole('ADMIN')")
+  @Audit
   public List<MovieEventDto> addMovieEvents(@RequestBody @ValidEachMovieEvent List<MovieEventDto> movieEventDtoList){
     return movieEventService.addEvents(movieEventDtoList.stream().map(movieEventMapper::toEntity).toList())
             .stream().map(movieEventMapper::toDto).toList();
